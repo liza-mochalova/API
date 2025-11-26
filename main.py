@@ -17,7 +17,7 @@ async def lifespan(app: FastAPI):
     print("Off")
     # Clean up the ML models and release the resources 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 app.include_router(tasks_router)
 
 
