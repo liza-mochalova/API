@@ -20,7 +20,13 @@ app.include_router(tasks_router)
 
 @app.get("/")
 def read_root():
-    return {"message": "FastAPI is working!", "docs": "/docs"}
-
+    return {
+        "message": "FastAPI Tasks API", 
+        "endpoints": {
+            "docs": "/docs",
+            "tasks": "/tasks",
+            "add_task": "POST /tasks"
+        }
+    }
 
 
