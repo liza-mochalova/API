@@ -18,6 +18,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.include_router(tasks_router)
 
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is working!", "docs": "/docs"}
 
 
 
