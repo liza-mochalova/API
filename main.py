@@ -20,8 +20,5 @@ async def lifespan(app: FastAPI):
 app = FastAPI()
 app.include_router(tasks_router)
 
-@app.get("/")
-def redirect_to_docs():
-    return RedirectResponse(url="/docs")
 
 
