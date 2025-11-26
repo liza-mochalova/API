@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
+from fastapi.responses import RedirectResponse
+
 from database import create_tables, delete_tables
 from router import router as tasks_router
 
@@ -15,9 +17,11 @@ async def lifespan(app: FastAPI):
     print("Off")
     # Clean up the ML models and release the resources 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 app.include_router(tasks_router)
 
-
+@app.get("/")
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
 
 
